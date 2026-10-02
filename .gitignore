@@ -49,3 +49,8 @@ next-env.d.ts
 /backup/
 /.openai/
 tsconfig.tsbuildinfo
+
+# deployment output
+/cpanel-deploy/
+/cpanel-deploy.zip
+!.env.example

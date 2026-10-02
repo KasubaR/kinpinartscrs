@@ -1,10 +1,11 @@
 import { redirect } from "next/navigation";
-import { chatGPTSignOutPath, getChatGPTUser } from "./chatgpt-auth";
+import { getCurrentUser } from "@/lib/auth";
 import Crm from "./crm";
 
-export default async function Page() {
-  const user = await getChatGPTUser();
-  if (!user) redirect("/login");
+export const dynamic = "force-dynamic";
 
-  return <Crm signOutHref={chatGPTSignOutPath("/login")} />;
+export default async function Page() {
+  if (!(await getCurrentUser())) redirect("/login");
+
+  return <Crm />;
 }
